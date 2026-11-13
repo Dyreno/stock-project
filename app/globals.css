@@ -1,1 +1,107 @@
 @import "tailwindcss";
+
+
+
+/* Minimal Light Theme */
+
+.stock-dashboard {
+  background: #f5f6fa;
+  color: #111827;
+}
+
+/* Cards and product table */
+.stock-dashboard .bg-gray-900 {
+  background: #ffffff !important;
+  color: #111827;
+}
+
+.stock-dashboard .bg-gray-800 {
+  background: #f8fafc !important;
+  color: #111827;
+}
+
+/* Secondary text */
+.stock-dashboard .text-gray-400 {
+  color: #64748b !important;
+}
+
+.stock-dashboard .text-gray-300 {
+  color: #475569 !important;
+}
+
+/* Borders */
+.stock-dashboard .border-gray-700,
+.stock-dashboard .border-gray-800 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Product table */
+.stock-dashboard table {
+  color: #111827;
+}
+
+.stock-dashboard thead {
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+}
+
+.stock-dashboard tbody tr {
+  background: #ffffff;
+}
+
+.stock-dashboard tbody tr:hover {
+  background: #f8fafc !important;
+}
+
+/* Primary buttons */
+.stock-dashboard button.bg-green-600,
+.stock-dashboard button.bg-blue-600 {
+  background: #6366f1 !important;
+  color: #ffffff !important;
+}
+
+.stock-dashboard button.bg-green-600:hover,
+.stock-dashboard button.bg-blue-600:hover {
+  background: #4f46e5 !important;
+}
+
+/* Stock Out */
+.stock-dashboard button.bg-red-600 {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+.stock-dashboard button.bg-red-600:hover {
+  background: #dc2626 !important;
+}
+
+/* Cancel buttons */
+.stock-dashboard button.bg-gray-700 {
+  background: #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+/* Inputs */
+.stock-dashboard input,
+.stock-dashboard textarea {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #cbd5e1;
+}
+
+.stock-dashboard input::placeholder,
+.stock-dashboard textarea::placeholder {
+  color: #94a3b8;
+}
+
+.stock-dashboard input:focus,
+.stock-dashboard textarea:focus {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 1px;
+}
+
+/* Disabled buttons */
+.stock-dashboard button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
