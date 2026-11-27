@@ -27,3 +27,8 @@ export type products = Prisma.productsModel
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type stock_transactions = Prisma.stock_transactionsModel
+/**
+ * Model activity_logs
+ * 
+ */
+export type activity_logs = Prisma.activity_logsModel

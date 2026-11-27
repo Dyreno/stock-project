@@ -398,7 +398,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   products: 'products',
-  stock_transactions: 'stock_transactions'
+  stock_transactions: 'stock_transactions',
+  activity_logs: 'activity_logs'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -414,7 +415,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "products" | "stock_transactions"
+    modelProps: "products" | "stock_transactions" | "activity_logs"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -566,6 +567,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    activity_logs: {
+      payload: Prisma.$activity_logsPayload<ExtArgs>
+      fields: Prisma.activity_logsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.activity_logsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.activity_logsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload>
+        }
+        findFirst: {
+          args: Prisma.activity_logsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.activity_logsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload>
+        }
+        findMany: {
+          args: Prisma.activity_logsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload>[]
+        }
+        create: {
+          args: Prisma.activity_logsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload>
+        }
+        createMany: {
+          args: Prisma.activity_logsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.activity_logsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload>[]
+        }
+        delete: {
+          args: Prisma.activity_logsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload>
+        }
+        update: {
+          args: Prisma.activity_logsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload>
+        }
+        deleteMany: {
+          args: Prisma.activity_logsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.activity_logsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.activity_logsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload>[]
+        }
+        upsert: {
+          args: Prisma.activity_logsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$activity_logsPayload>
+        }
+        aggregate: {
+          args: Prisma.Activity_logsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateActivity_logs>
+        }
+        groupBy: {
+          args: Prisma.activity_logsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Activity_logsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.activity_logsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Activity_logsCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -618,6 +693,7 @@ export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typ
 
 
 export const Stock_transactionsScalarFieldEnum = {
+  discord_id: 'discord_id',
   id: 'id',
   product_id: 'product_id',
   type: 'type',
@@ -629,12 +705,34 @@ export const Stock_transactionsScalarFieldEnum = {
 export type Stock_transactionsScalarFieldEnum = (typeof Stock_transactionsScalarFieldEnum)[keyof typeof Stock_transactionsScalarFieldEnum]
 
 
+export const Activity_logsScalarFieldEnum = {
+  id: 'id',
+  discord_id: 'discord_id',
+  action: 'action',
+  product_id: 'product_id',
+  product_sku: 'product_sku',
+  product_name: 'product_name',
+  details: 'details',
+  created_at: 'created_at'
+} as const
+
+export type Activity_logsScalarFieldEnum = (typeof Activity_logsScalarFieldEnum)[keyof typeof Activity_logsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -651,6 +749,15 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
 
@@ -698,6 +805,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -867,6 +988,7 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   products?: Prisma.productsOmit
   stock_transactions?: Prisma.stock_transactionsOmit
+  activity_logs?: Prisma.activity_logsOmit
 }
 
 /* Types for Logging */

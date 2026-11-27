@@ -2,14 +2,24 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { formatThaiDate } from "@/lib/date";
+import { auth } from "@/auth";
 
 // POST - Stock In / Stock Out
 export async function POST(request: Request) {
   try {
+    const session = await auth();
+    const discordId = session?.user?.discordId;
+
+    if (!discordId) {
+      return NextResponse.json(
+        { error: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
     const body = await request.json();
     const { product_id, type, quantity, note } = body;
 
-    // Validate input
     if (
       !Number.isInteger(product_id) ||
       !["IN", "OUT"].includes(type) ||
@@ -25,7 +35,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Update stock and save transaction atomically
     const result = await prisma.$transaction(async (tx) => {
       const updated = await tx.products.updateMany({
         where: {
@@ -48,17 +57,16 @@ export async function POST(request: Request) {
         );
       }
 
-      // Save stock transaction
       const transaction = await tx.stock_transactions.create({
         data: {
           product_id,
           type,
           quantity,
           note: note ?? null,
+          discord_id: discordId,
         },
       });
 
-      // Get updated product
       const product = await tx.products.findUniqueOrThrow({
         where: { id: product_id },
       });
@@ -66,7 +74,6 @@ export async function POST(request: Request) {
       return { transaction, product };
     });
 
-    // Format dates to Thailand timezone
     return NextResponse.json(
       {
         transaction: {
@@ -95,8 +102,7 @@ export async function POST(request: Request) {
     ) {
       return NextResponse.json(
         {
-          error:
-            "Product not found or insufficient stock",
+          error: "Product not found or insufficient stock",
         },
         { status: 409 }
       );
@@ -114,6 +120,15 @@ export async function POST(request: Request) {
 // GET - Stock transaction history
 export async function GET() {
   try {
+    const session = await auth();
+
+    if (!session?.user?.discordId) {
+      return NextResponse.json(
+        { error: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
     const transactions =
       await prisma.stock_transactions.findMany({
         orderBy: {
@@ -124,7 +139,6 @@ export async function GET() {
         },
       });
 
-    // Format all dates to Thailand timezone
     const formattedTransactions = transactions.map(
       (transaction) => ({
         ...transaction,

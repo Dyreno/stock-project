@@ -10,4 +10,5 @@
  */
 export type * from './models/products'
 export type * from './models/stock_transactions'
+export type * from './models/activity_logs'
 export type * from './commonInputTypes'

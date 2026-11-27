@@ -39,6 +39,7 @@ export type Stock_transactionsSumAggregateOutputType = {
 }
 
 export type Stock_transactionsMinAggregateOutputType = {
+  discord_id: string | null
   id: number | null
   product_id: number | null
   type: string | null
@@ -48,6 +49,7 @@ export type Stock_transactionsMinAggregateOutputType = {
 }
 
 export type Stock_transactionsMaxAggregateOutputType = {
+  discord_id: string | null
   id: number | null
   product_id: number | null
   type: string | null
@@ -57,6 +59,7 @@ export type Stock_transactionsMaxAggregateOutputType = {
 }
 
 export type Stock_transactionsCountAggregateOutputType = {
+  discord_id: number
   id: number
   product_id: number
   type: number
@@ -80,6 +83,7 @@ export type Stock_transactionsSumAggregateInputType = {
 }
 
 export type Stock_transactionsMinAggregateInputType = {
+  discord_id?: true
   id?: true
   product_id?: true
   type?: true
@@ -89,6 +93,7 @@ export type Stock_transactionsMinAggregateInputType = {
 }
 
 export type Stock_transactionsMaxAggregateInputType = {
+  discord_id?: true
   id?: true
   product_id?: true
   type?: true
@@ -98,6 +103,7 @@ export type Stock_transactionsMaxAggregateInputType = {
 }
 
 export type Stock_transactionsCountAggregateInputType = {
+  discord_id?: true
   id?: true
   product_id?: true
   type?: true
@@ -194,6 +200,7 @@ export type stock_transactionsGroupByArgs<ExtArgs extends runtime.Types.Extensio
 }
 
 export type Stock_transactionsGroupByOutputType = {
+  discord_id: string | null
   id: number
   product_id: number
   type: string
@@ -226,6 +233,7 @@ export type stock_transactionsWhereInput = {
   AND?: Prisma.stock_transactionsWhereInput | Prisma.stock_transactionsWhereInput[]
   OR?: Prisma.stock_transactionsWhereInput[]
   NOT?: Prisma.stock_transactionsWhereInput | Prisma.stock_transactionsWhereInput[]
+  discord_id?: Prisma.StringNullableFilter<"stock_transactions"> | string | null
   id?: Prisma.IntFilter<"stock_transactions"> | number
   product_id?: Prisma.IntFilter<"stock_transactions"> | number
   type?: Prisma.StringFilter<"stock_transactions"> | string
@@ -236,6 +244,7 @@ export type stock_transactionsWhereInput = {
 }
 
 export type stock_transactionsOrderByWithRelationInput = {
+  discord_id?: Prisma.SortOrderInput | Prisma.SortOrder
   id?: Prisma.SortOrder
   product_id?: Prisma.SortOrder
   type?: Prisma.SortOrder
@@ -250,6 +259,7 @@ export type stock_transactionsWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.stock_transactionsWhereInput | Prisma.stock_transactionsWhereInput[]
   OR?: Prisma.stock_transactionsWhereInput[]
   NOT?: Prisma.stock_transactionsWhereInput | Prisma.stock_transactionsWhereInput[]
+  discord_id?: Prisma.StringNullableFilter<"stock_transactions"> | string | null
   product_id?: Prisma.IntFilter<"stock_transactions"> | number
   type?: Prisma.StringFilter<"stock_transactions"> | string
   quantity?: Prisma.IntFilter<"stock_transactions"> | number
@@ -259,6 +269,7 @@ export type stock_transactionsWhereUniqueInput = Prisma.AtLeast<{
 }, "id">
 
 export type stock_transactionsOrderByWithAggregationInput = {
+  discord_id?: Prisma.SortOrderInput | Prisma.SortOrder
   id?: Prisma.SortOrder
   product_id?: Prisma.SortOrder
   type?: Prisma.SortOrder
@@ -276,6 +287,7 @@ export type stock_transactionsScalarWhereWithAggregatesInput = {
   AND?: Prisma.stock_transactionsScalarWhereWithAggregatesInput | Prisma.stock_transactionsScalarWhereWithAggregatesInput[]
   OR?: Prisma.stock_transactionsScalarWhereWithAggregatesInput[]
   NOT?: Prisma.stock_transactionsScalarWhereWithAggregatesInput | Prisma.stock_transactionsScalarWhereWithAggregatesInput[]
+  discord_id?: Prisma.StringNullableWithAggregatesFilter<"stock_transactions"> | string | null
   id?: Prisma.IntWithAggregatesFilter<"stock_transactions"> | number
   product_id?: Prisma.IntWithAggregatesFilter<"stock_transactions"> | number
   type?: Prisma.StringWithAggregatesFilter<"stock_transactions"> | string
@@ -285,6 +297,7 @@ export type stock_transactionsScalarWhereWithAggregatesInput = {
 }
 
 export type stock_transactionsCreateInput = {
+  discord_id?: string | null
   type: string
   quantity: number
   note?: string | null
@@ -293,6 +306,7 @@ export type stock_transactionsCreateInput = {
 }
 
 export type stock_transactionsUncheckedCreateInput = {
+  discord_id?: string | null
   id?: number
   product_id: number
   type: string
@@ -302,6 +316,7 @@ export type stock_transactionsUncheckedCreateInput = {
 }
 
 export type stock_transactionsUpdateInput = {
+  discord_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -310,6 +325,7 @@ export type stock_transactionsUpdateInput = {
 }
 
 export type stock_transactionsUncheckedUpdateInput = {
+  discord_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id?: Prisma.IntFieldUpdateOperationsInput | number
   product_id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
@@ -319,6 +335,7 @@ export type stock_transactionsUncheckedUpdateInput = {
 }
 
 export type stock_transactionsCreateManyInput = {
+  discord_id?: string | null
   id?: number
   product_id: number
   type: string
@@ -328,6 +345,7 @@ export type stock_transactionsCreateManyInput = {
 }
 
 export type stock_transactionsUpdateManyMutationInput = {
+  discord_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -335,6 +353,7 @@ export type stock_transactionsUpdateManyMutationInput = {
 }
 
 export type stock_transactionsUncheckedUpdateManyInput = {
+  discord_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id?: Prisma.IntFieldUpdateOperationsInput | number
   product_id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
@@ -354,6 +373,7 @@ export type stock_transactionsOrderByRelationAggregateInput = {
 }
 
 export type stock_transactionsCountOrderByAggregateInput = {
+  discord_id?: Prisma.SortOrder
   id?: Prisma.SortOrder
   product_id?: Prisma.SortOrder
   type?: Prisma.SortOrder
@@ -369,6 +389,7 @@ export type stock_transactionsAvgOrderByAggregateInput = {
 }
 
 export type stock_transactionsMaxOrderByAggregateInput = {
+  discord_id?: Prisma.SortOrder
   id?: Prisma.SortOrder
   product_id?: Prisma.SortOrder
   type?: Prisma.SortOrder
@@ -378,6 +399,7 @@ export type stock_transactionsMaxOrderByAggregateInput = {
 }
 
 export type stock_transactionsMinOrderByAggregateInput = {
+  discord_id?: Prisma.SortOrder
   id?: Prisma.SortOrder
   product_id?: Prisma.SortOrder
   type?: Prisma.SortOrder
@@ -443,6 +465,7 @@ export type DateTimeFieldUpdateOperationsInput = {
 }
 
 export type stock_transactionsCreateWithoutProductsInput = {
+  discord_id?: string | null
   type: string
   quantity: number
   note?: string | null
@@ -450,6 +473,7 @@ export type stock_transactionsCreateWithoutProductsInput = {
 }
 
 export type stock_transactionsUncheckedCreateWithoutProductsInput = {
+  discord_id?: string | null
   id?: number
   type: string
   quantity: number
@@ -487,6 +511,7 @@ export type stock_transactionsScalarWhereInput = {
   AND?: Prisma.stock_transactionsScalarWhereInput | Prisma.stock_transactionsScalarWhereInput[]
   OR?: Prisma.stock_transactionsScalarWhereInput[]
   NOT?: Prisma.stock_transactionsScalarWhereInput | Prisma.stock_transactionsScalarWhereInput[]
+  discord_id?: Prisma.StringNullableFilter<"stock_transactions"> | string | null
   id?: Prisma.IntFilter<"stock_transactions"> | number
   product_id?: Prisma.IntFilter<"stock_transactions"> | number
   type?: Prisma.StringFilter<"stock_transactions"> | string
@@ -496,6 +521,7 @@ export type stock_transactionsScalarWhereInput = {
 }
 
 export type stock_transactionsCreateManyProductsInput = {
+  discord_id?: string | null
   id?: number
   type: string
   quantity: number
@@ -504,6 +530,7 @@ export type stock_transactionsCreateManyProductsInput = {
 }
 
 export type stock_transactionsUpdateWithoutProductsInput = {
+  discord_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -511,6 +538,7 @@ export type stock_transactionsUpdateWithoutProductsInput = {
 }
 
 export type stock_transactionsUncheckedUpdateWithoutProductsInput = {
+  discord_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
@@ -519,6 +547,7 @@ export type stock_transactionsUncheckedUpdateWithoutProductsInput = {
 }
 
 export type stock_transactionsUncheckedUpdateManyWithoutProductsInput = {
+  discord_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
@@ -529,6 +558,7 @@ export type stock_transactionsUncheckedUpdateManyWithoutProductsInput = {
 
 
 export type stock_transactionsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  discord_id?: boolean
   id?: boolean
   product_id?: boolean
   type?: boolean
@@ -539,6 +569,7 @@ export type stock_transactionsSelect<ExtArgs extends runtime.Types.Extensions.In
 }, ExtArgs["result"]["stock_transactions"]>
 
 export type stock_transactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  discord_id?: boolean
   id?: boolean
   product_id?: boolean
   type?: boolean
@@ -549,6 +580,7 @@ export type stock_transactionsSelectCreateManyAndReturn<ExtArgs extends runtime.
 }, ExtArgs["result"]["stock_transactions"]>
 
 export type stock_transactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  discord_id?: boolean
   id?: boolean
   product_id?: boolean
   type?: boolean
@@ -559,6 +591,7 @@ export type stock_transactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.
 }, ExtArgs["result"]["stock_transactions"]>
 
 export type stock_transactionsSelectScalar = {
+  discord_id?: boolean
   id?: boolean
   product_id?: boolean
   type?: boolean
@@ -567,7 +600,7 @@ export type stock_transactionsSelectScalar = {
   created_at?: boolean
 }
 
-export type stock_transactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "product_id" | "type" | "quantity" | "note" | "created_at", ExtArgs["result"]["stock_transactions"]>
+export type stock_transactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"discord_id" | "id" | "product_id" | "type" | "quantity" | "note" | "created_at", ExtArgs["result"]["stock_transactions"]>
 export type stock_transactionsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   products?: boolean | Prisma.productsDefaultArgs<ExtArgs>
 }
@@ -584,6 +617,7 @@ export type $stock_transactionsPayload<ExtArgs extends runtime.Types.Extensions.
     products: Prisma.$productsPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    discord_id: string | null
     id: number
     product_id: number
     type: string
@@ -673,8 +707,8 @@ export interface stock_transactionsDelegate<ExtArgs extends runtime.Types.Extens
    * // Get first 10 Stock_transactions
    * const stock_transactions = await prisma.stock_transactions.findMany({ take: 10 })
    * 
-   * // Only select the `id`
-   * const stock_transactionsWithIdOnly = await prisma.stock_transactions.findMany({ select: { id: true } })
+   * // Only select the `discord_id`
+   * const stock_transactionsWithDiscord_idOnly = await prisma.stock_transactions.findMany({ select: { discord_id: true } })
    * 
    */
   findMany<T extends stock_transactionsFindManyArgs>(args?: Prisma.SelectSubset<T, stock_transactionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$stock_transactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -718,9 +752,9 @@ export interface stock_transactionsDelegate<ExtArgs extends runtime.Types.Extens
    *   ]
    * })
    * 
-   * // Create many Stock_transactions and only return the `id`
-   * const stock_transactionsWithIdOnly = await prisma.stock_transactions.createManyAndReturn({
-   *   select: { id: true },
+   * // Create many Stock_transactions and only return the `discord_id`
+   * const stock_transactionsWithDiscord_idOnly = await prisma.stock_transactions.createManyAndReturn({
+   *   select: { discord_id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -809,9 +843,9 @@ export interface stock_transactionsDelegate<ExtArgs extends runtime.Types.Extens
    *   ]
    * })
    * 
-   * // Update zero or more Stock_transactions and only return the `id`
-   * const stock_transactionsWithIdOnly = await prisma.stock_transactions.updateManyAndReturn({
-   *   select: { id: true },
+   * // Update zero or more Stock_transactions and only return the `discord_id`
+   * const stock_transactionsWithDiscord_idOnly = await prisma.stock_transactions.updateManyAndReturn({
+   *   select: { discord_id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1014,6 +1048,7 @@ export interface Prisma__stock_transactionsClient<T, Null = never, ExtArgs exten
  * Fields of the stock_transactions model
  */
 export interface stock_transactionsFieldRefs {
+  readonly discord_id: Prisma.FieldRef<"stock_transactions", 'String'>
   readonly id: Prisma.FieldRef<"stock_transactions", 'Int'>
   readonly product_id: Prisma.FieldRef<"stock_transactions", 'Int'>
   readonly type: Prisma.FieldRef<"stock_transactions", 'String'>

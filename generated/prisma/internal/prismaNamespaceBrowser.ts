@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   products: 'products',
-  stock_transactions: 'stock_transactions'
+  stock_transactions: 'stock_transactions',
+  activity_logs: 'activity_logs'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -84,6 +85,7 @@ export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typ
 
 
 export const Stock_transactionsScalarFieldEnum = {
+  discord_id: 'discord_id',
   id: 'id',
   product_id: 'product_id',
   type: 'type',
@@ -95,12 +97,34 @@ export const Stock_transactionsScalarFieldEnum = {
 export type Stock_transactionsScalarFieldEnum = (typeof Stock_transactionsScalarFieldEnum)[keyof typeof Stock_transactionsScalarFieldEnum]
 
 
+export const Activity_logsScalarFieldEnum = {
+  id: 'id',
+  discord_id: 'discord_id',
+  action: 'action',
+  product_id: 'product_id',
+  product_sku: 'product_sku',
+  product_name: 'product_name',
+  details: 'details',
+  created_at: 'created_at'
+} as const
+
+export type Activity_logsScalarFieldEnum = (typeof Activity_logsScalarFieldEnum)[keyof typeof Activity_logsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -117,4 +141,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
